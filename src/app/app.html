@@ -1,1 +1,29 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="nav">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Setting</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <button
+        menuClose
+        ion-item
+        (click)="onUpdateProfile()">
+        Update Profile
+      </button>
+
+      <button
+        menuClose
+        ion-item
+        (click)="onLogout()">
+        Logout
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav
+  #nav
+  [root]="rootPage"></ion-nav>

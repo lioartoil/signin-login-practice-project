@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item
+    text-center
+    no-lines>
+    <img
+      src="http://via.placeholder.com/300x200"
+      alt="logo">
+  </ion-item>
+
+  <form
+    #f="ngForm"
+    (ngSubmit)="onLogin(f)">
+    <ion-list>
+
+      <ion-item>
+        <ion-icon
+          name="mail"
+          item-left></ion-icon>
+        <ion-input
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+          email
+          ngModel></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon
+          name="lock"
+          item-left></ion-icon>
+        <ion-input
+          type="password"
+          name="password"
+          placeholder="Enter your password"
+          required
+          minlength="6"
+          ngModel></ion-input>
+      </ion-item>
+
+      <ion-item no-lines>
+        <ion-label>
+          <p>Remember me?</p>
+        </ion-label>
+        <ion-checkbox
+          name="remember"
+          ngModel="false"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+    <button
+      type="submit"
+      ion-button
+      block
+      [disabled]="!f.valid">
+      Login
+    </button>
+  </form>
+
+  <button
+    ion-button
+    block
+    outline
+    (click)="onSignup(f)">
+    Sign up
+  </button>
+  <button
+    ion-button
+    block
+    outline
+    (click)="onForgetPassword()">
+    Forget password?
+  </button>
+</ion-content>

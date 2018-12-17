@@ -1,0 +1,190 @@
+<!-- Generated template for the SignupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation. -->
+<ion-header>
+  <ion-navbar>
+
+    <ion-buttons start></ion-buttons>
+
+    <ion-title>{{ title }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form
+    [formGroup]="signupForm"
+    (ngSubmit)="onSignup()">
+
+    <ion-grid>
+      <ion-row *ngIf="!edit">
+        <ion-col>
+
+          <ion-item>
+            <ion-label
+              floating
+              class="my-label">
+              *Email
+            </ion-label>
+            <ion-input
+              type="email"
+              name="email"
+              formControlName="email"></ion-input>
+          </ion-item>
+
+          <p
+            *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched"
+            padding>
+            Email is not valid.
+          </p>
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+
+          <ion-item>
+            <ion-label
+              floating
+              class="my-label">
+              *First name
+            </ion-label>
+            <ion-input
+              type="text"
+              name="firstName"
+              formControlName="firstName"></ion-input>
+          </ion-item>
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+
+          <ion-item>
+            <ion-label
+              floating
+              class="my-label">
+              Last name
+            </ion-label>
+            <ion-input
+              type="text"
+              name="lastName"
+              formControlName="lastName"></ion-input>
+          </ion-item>
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="!edit">
+        <ion-col>
+
+          <ion-item>
+            <ion-label
+              floating
+              class="my-label">
+              *Password
+            </ion-label>
+            <ion-input
+              type="password"
+              name="password"
+              formControlName="password"></ion-input>
+          </ion-item>
+
+          <p
+            *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched"
+            padding>
+            Password must be at least 6 characters long.
+          </p>
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="!edit">
+        <ion-col>
+
+          <ion-item>
+            <ion-label
+              floating
+              class="my-label">
+              *Confirm Password
+            </ion-label>
+            <ion-input
+              type="password"
+              name="confirmPassword"
+              formControlName="confirmPassword"></ion-input>
+          </ion-item>
+
+          <p
+            *ngIf="signupForm.get('password').touched && signupForm.get('confirmPassword').touched && signupForm.get('password').value !== signupForm.get('confirmPassword').value"
+            padding>
+            Passwords did not match.
+          </p>
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+
+          <ion-item>
+            <ion-label
+              floating
+              class="my-label">
+              Birthday
+            </ion-label>
+            <ion-datetime
+              name="birthday"
+              displayFormat="MMM D, YYYY"
+              pickerFormat="MMM D, YYYY"
+              max="2005"
+              formControlName="birthday"></ion-datetime>
+          </ion-item>
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+
+          <ion-item>
+            <ion-label
+              floating
+              class="my-label">
+              Gender
+            </ion-label>
+            <ion-select formControlName="gender">
+              <ion-option value="male">Male</ion-option>
+              <ion-option value="female">Female</ion-option>
+              <ion-option value="other">Other</ion-option>
+              <ion-option value="decline">Decline to state</ion-option>
+            </ion-select>
+          </ion-item>
+
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="edit">
+        <ion-col>
+          <button
+            ion-button
+            clear
+            type="button"
+            (click)="onChangePassword()">
+            Change password
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <button
+      type="submit"
+      ion-button
+      block
+      [disabled]="!signupForm.valid || !signupForm.dirty">
+      {{ button }}
+    </button>
+
+  </form>
+</ion-content>
